@@ -1,0 +1,24 @@
+<!--pages/index/preview/redMoneySituation/redMoneySituation.wxml-->
+<view class='situation'>
+  <view class='situation-top'>
+    <image class='situation-top-img' src='{{situationTopImg}}'></image>
+    <image class='sender-img' src='{{senderInfo.senderImg}}'></image>
+    <view class='name-fighting'>
+      <text class='sender-name dot'>{{senderInfo.senderName}}的红包</text>
+      <image class='fightingImg' src='{{fightingImg}}'></image>
+    </view>
+  </view>
+  <view class='envelope-total' wx:if="{{isGetRedEnvelope}}">你领取的金额</view>
+  <view class='envelope-number' wx:if="{{isGetRedEnvelope}}">{{getRedEnvelopesNumber}}<text class='yuan'>元</text></view>
+  <view class='geterList'>
+    <view class='envelope-count'>领取{{envelopeGeterCount}}/{{envelopeTotalCount}}个</view>
+    <view class='geterInfo' wx:for="{{geterInfo}}" wx:for-item="itemName"><!--{{index}}: {{item.message}}/{{geterInfo.geterImg}}-->
+      <image class='geterImg' src='{{itemName.wx_avatar_list}}'></image>
+      <view class='name-time'>
+        <view class='name'>{{itemName.wx_name_list}}</view>
+        <view class='time'>{{itemName.get_red_envelopes_date_list}}</view>
+      </view>
+      <view class='money-number'>{{itemName.get_red_envelopes_amount_list}}元</view>
+    </view>
+  </view>
+</view>

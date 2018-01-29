@@ -1,0 +1,78 @@
+.container {
+  background: #f5efef;
+}
+.withdraw-input {
+  background: #fff;
+  border-radius: 8rpx;
+  width: 678rpx;
+  margin: 36rpx auto;
+  text-align: left;
+}
+.user-info, .withdraw-money, .cutting-line {
+  width: 558rpx;
+  margin: 0 auto;
+}
+.user-info {
+  overflow: hidden;
+  margin-top: 36rpx;
+  margin-bottom: 80rpx;
+}
+.user-info-title {
+  float: left;
+  font-size: 32rpx;
+}
+.user-money {
+  float: right;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.withdraw-money-input {
+  font-weight: bold;
+  display: flex;
+}
+.withdraw-money-input text {
+  margin: 64rpx 30rpx 64rpx 0;
+  font-size: 60rpx;
+}
+.withdraw-money-input input {
+  font-size: 70rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 64rpx 0 54rpx;
+}
+.cutting-line {
+  height: 2rpx;
+  background: #ccc; 
+}
+.withdraw-hint {
+  font-size: 24rpx;
+  color: #444d5c;
+  margin: 42rpx 0;
+}
+.withdraw-all {
+  color: #fe2754;
+  text-decoration: underline;
+}
+.withdraw-btn .button-have {
+  width: 558rpx;
+  margin-bottom: 44rpx;
+}
+.button-have.is-disabled {
+  opacity: 0.7;
+}
+.to-date-hint {
+  text-align: center;
+  font-size: 24rpx;
+  color: #c6c6c6;
+  margin-bottom: 42rpx;
+}
+.all-withdraw-detail {
+  text-align: center;
+  color: #fe2754;
+  text-decoration: underline;
+  font-size: 32rpx;
+}
+.not-valid-money {
+  font-size: 24rpx;
+  color: #fe2b52;
+}

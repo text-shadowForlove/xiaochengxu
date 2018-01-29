@@ -1,0 +1,94 @@
+.container {
+  width: 100%;
+}
+.success-head {
+  background: #fff;
+  width: 590rpx;
+  height: 164rpx;
+  margin: 24rpx auto;
+  border-radius: 8rpx;
+  text-align: center;
+}
+.success-head text {
+  display: block;
+  color: #fe384c;
+}
+.send-hint {
+  font-size: 36rpx;
+  margin: 30rpx 0 0;
+}
+.send-praise {
+  font-size: 28rpx;
+}
+.success-award {
+  width: 590rpx;
+  margin: 0 auto;
+  position: relative;
+  overflow: auto;
+}
+.discount-background {
+  width: 590rpx;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.discount-show{
+  position: relative;
+  text-align: center;
+  z-index: 10;
+}
+.award-head {
+  height: 236rpx;
+}
+.share-success {
+  width: 94rpx;
+  height: 92rpx;
+  margin-top: 56rpx;
+}
+.award-head text {
+  display: block;
+  font-size: 36rpx;
+  color: #fe384c;
+}
+.award-content {
+  height: 702rpx;
+  color: #919191;
+  font-size: 28rpx;
+}
+.award-content text {
+  display: block;
+}
+.award-name {
+  display: block;
+  padding: 58rpx 0 0;
+  color: #666;
+}
+.award-type {
+  padding: 30rpx 0;
+}
+.award-type image {
+  height: 100rpx;
+  width: 230rpx;
+  position: relative;
+  left: -30rpx;
+}
+.award-explain {
+  text-align: left;
+  width: 510rpx;
+  margin: 0 auto;
+}
+.award-indate {
+  padding: 32rpx 0;
+}
+.award-button .button-have,
+.award-button .button-nohave::afte,
+.award-button .button-nohave-ios::afte{
+  width: 450rpx;
+}
+.award-button .button-nohave, .award-button .button-nohave-ios {
+  width: 442rpx;
+}
+.award-button .button-have {
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}

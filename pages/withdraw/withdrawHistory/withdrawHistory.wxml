@@ -1,0 +1,22 @@
+<!--pages/withdraw/withdrawHistory/withdrawHistory.wxml-->
+<view class='historyContainer'>
+  <view class='historyTop'>
+    <image src='{{historyTop}}'></image>
+  </view>
+  <view class='historyInfo'>
+    <text class='date'>日期</text>
+    <text class='money'>提现金额</text>
+    <text class='statue'>状态</text>
+  </view>
+  <view class='historybottom'>
+    <view class='historyList check' wx:if="{{hasHistory}}" wx:for="{{withDrawHistory}}" wx:for-item="itemName">
+      <text class='date'>{{itemName.create_time}}</text>
+      <text class='money'>{{itemName.amount}}</text>
+      <text class='statue'>{{itemName.status}}</text>
+    </view>
+    <view class='noHistory' wx:if="{{!hasHistory}}">当前无记录</view>
+  </view>
+  <view class='historyBottomImg'>
+      <image src='{{historyBottomImg}}'></image>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+<view class='container' style='background: url({{templateInfo.bg_resource_path}}) no-repeat;background-size: cover;'>
+  <view class='show-card-image'>
+    <image class='card-cover' mode='aspectFill' src='{{templateInfo.resource_path}}'></image>
+    <view class='upload-info'>
+      <image class='card-upload' mode='aspectFill' src='{{uplaodImage}}'></image>
+      <image wx:if='{{!isUpload}}' class='upload-hint' src='../../../../images/upload-hint.png'></image>
+      <view class='upload-mess'>
+        <view class='mess-left'>
+          <text>by {{userInfo.wx_name}}</text>
+        </view>
+        <view class='mess-right'>
+          <image class='time-icon' src='../../../../images/time-icon.png'></image>
+          <text>{{uploadTime}}</text>
+        </view>
+      </view>
+    </view>
+    <image class='card-envelope' mode='aspectFill' src='../../../../images/envelope.png'></image>
+  </view>
+  <view class='operation-button'>
+    <button class='button-have' bindtap='choiceLocalImage'>
+      <image class='upload-image-btn' src='../../../../images/upload-image.png'></image>
+      上传
+    </button>
+    <button class='{{isIos ? "button-nohave-ios" : "button-nohave"}}' bindtap='goRecordVoice'>下一步</button>
+  </view>
+</view>

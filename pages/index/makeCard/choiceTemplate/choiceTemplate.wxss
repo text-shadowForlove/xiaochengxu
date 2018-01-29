@@ -1,0 +1,40 @@
+.show-template {
+  text-align: center;
+  height: 974rpx;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.template-cover {
+  top: 60rpx;
+  right: 118rpx;
+  height: 914rpx;
+  width: 514rpx;
+  position: absolute;
+  z-index: 100;
+}
+.template-uplaod {
+  position: absolute;
+  top: 180rpx;
+  right: 88rpx;
+  width: 472rpx;
+  height: 716rpx;
+  transform: rotate(12deg);
+  transform-origin: center;
+  z-index: 50;
+}
+.template-envelope {
+  position: absolute;
+  top: 320rpx;
+  right: 68rpx;
+  width: 362rpx;
+  height: 612rpx;
+  transform: rotate(30deg);
+  transform-origin: center;
+  z-index: 1;
+}
+.change-template {
+  width: 60rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}

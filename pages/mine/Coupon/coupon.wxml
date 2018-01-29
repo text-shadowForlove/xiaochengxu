@@ -1,0 +1,15 @@
+<!--pages/mine/Coupon/coupon.wxml-->
+<view class="page-container">
+    <view class="coupon-container">
+        <view class="coupon-explain">
+            <text class="yishuo-baby">一说宝宝智能机器人</text>
+            <text class="voucher">
+                <text class="voucher-money">¥200</text>
+                <text class="voucher-text">抵用券</text>
+            </text>
+            <navigator class="go-use" url="{{card.navigateTo}}">去使用</navigator>
+        </view>
+        <text class="count">数量: 3</text>
+        <image src="/images/baby.png"></image>
+    </view>
+</view>

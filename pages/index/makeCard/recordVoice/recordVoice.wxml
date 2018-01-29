@@ -1,0 +1,39 @@
+<view class='container'>
+  <view class='choice-music'>
+    <text class='choice-title'>选择背景音乐</text>
+    <button class='music-info' bindtap='playMusic'>
+      <image wx:if='{{!isPlayingMusic}}' src='../../../../images/play.png'></image>
+      <image wx:else src='../../../../images/recording.png'></image>
+      {{templateInfo.music_name}}
+    </button>
+    <view class='see-music-list' data-musicId='{{templateInfo.music_id}}' bindtap='goMusicList'>查看音乐库</view>
+  </view>
+  <view class='record-cue-words'>
+    <view class='cue-words-head'>
+      <view class='cue-words-title'>语音提词器<text class='edit-hint'>(可自己编辑哦)</text></view>
+      <view class='change-cue-words' bindtap='changeCureWords'>
+        <image src='../../../../images/change-cure-words.png'></image>换一批
+      </view>
+    </view>
+    <view class='cue-words-content'>
+      <image class='content-left' src='../../../../images/double-quote.png'></image>
+      <textarea auto-height='true' class='content-text' value='{{cueWords}}'></textarea>
+      <image class='content-right' src='../../../../images/double-quote.png'></image>
+    </view>
+  </view>
+  <view class='record-status'>
+    <text class='recording-time'>{{recordingTime}}</text>
+    <view class='btn-radius' bindtap='recordOrPlay'>
+      <image class='{{isRecordEnd?"play-voice-img":""}}' src='../../../../images/{{recordBtnImage}}.png'></image>
+    </view>
+    <text class='record-text'>{{recordStatus}}</text>
+    <text class='record-hint-text'>({{recordHint}})</text>
+  </view>
+  <view class='operation-button' wx:if='{{isRecordEnd}}'>
+    <button class='{{isIos ? "button-nohave-ios" : "button-nohave"}}' bindtap='recordAgain'>
+      <image class='record-again' src='../../../../images/record-again.png'></image>
+      重新录制
+    </button>
+    <button class='button-have' bindtap='goGiveRedMoney'>下一步</button>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<import src="../cardTemplate/cardTemplate.wxml" />
+<block wx:for="{{cardData}}" wx:for-item="card" wx:key="*this">
+    <view class="page-container">
+        <template is="cardTemplate" data="{{card}}"></template>
+    </view>
+</block>

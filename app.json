@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/gethongbao/gethongbao",
+    "pages/index/preview/preview",
+    "pages/index/gethongbao/getenvelope/getenvelope",
+    "pages/index/sendFriend/sendFriend",
+    "pages/index/preview/envelope/envelope",
+    "pages/index/index",
+    "pages/mine/myCards/myCards",
+    "pages/index/preview/redMoneySituation/redMoneySituation",
+    "pages/index/shareSucceed/shareSucceed",
+    "pages/index/makeCard/giveRedMoney/giveRedMoney",
+    "pages/index/makeCard/recordVoice/recordVoice",
+    "pages/index/makeCard/uploadImage/uploadImage",
+    "pages/index/makeCard/choiceTemplate/choiceTemplate",
+    "pages/index/makeCard/musicList/musicList",
+    "pages/withdraw/withdraw",
+    "pages/withdraw/withdrawSuccess/withdrawSuccess",
+    "pages/withdraw/withdrawHistory/withdrawHistory",
+    "pages/mine/mine",
+    "pages/mine/Coupon/coupon",
+    "pages/mine/receiveCards/receiveCards"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "一说语音贺卡",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#f62d59",
+    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "list": [{
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-actived.png"
+      },
+      {
+        "text": "提现",
+        "pagePath": "pages/withdraw/withdraw",
+        "iconPath": "images/withdraw.png",
+        "selectedIconPath": "images/withdraw-actived.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-actived.png"
+      }
+    ]
+  }
+}

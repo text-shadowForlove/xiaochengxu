@@ -1,0 +1,19 @@
+<view class='list-container'>
+  <view class='music-li' wx:for='{{musicList}}' wx:key='unique'>
+    <view class='music-radio {{item.music_id == choiceMusicId ? "is-checked" : ""}}' data-music='{{item}}' bindtap='changeChoiceMusic'>
+      <image wx:if='{{item.music_id == choiceMusicId}}' src='../../../../images/checked-music.png'></image>
+    </view>
+    <text class='music-index'>{{index+1}}</text>
+    <view class='music-info'>
+      <text class='music-title'>{{item.music_name}}</text>
+      <text class='music-type'>纯音乐</text>
+    </view>
+    <view class='music-status {{isIos ? "is-ios" : ""}}' data-music='{{item}}' bindtap='changePlayingMusic'>
+      <image wx:if='{{item.music_id != playingMusicId}}' src='../../../../images/play.png'></image>
+      <image wx:else src='../../../../images/playing.png'></image> 
+    </view>
+  </view>
+</view>
+<view class='operation-button'>
+  <button class='button-have' bindtap='sureChoiceMusic'>确定</button>
+</view>

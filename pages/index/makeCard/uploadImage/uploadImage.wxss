@@ -1,0 +1,77 @@
+.show-card-image {
+  text-align: center;
+  height: 974rpx;
+  width: 100%;
+  position: relative;
+}
+.card-cover {
+  top: 60rpx;
+  right: 110rpx;
+  height: 914rpx;
+  width: 514rpx;
+  position: absolute;
+  z-index: 1;
+}
+.upload-info {
+  position: absolute;
+  top: 160rpx;
+  right: 50rpx;
+  width: 554rpx;
+  height: 840rpx;
+  transform: rotate(5deg);
+  transform-origin: center;
+  z-index: 50;
+  background: #fff;
+}
+.upload-info .card-upload {
+  width: 478rpx;
+  height: 714rpx;
+  position: relative;
+  top: 36rpx;
+  z-index: 50;
+}
+.upload-info .upload-hint {
+  width: 340rpx;
+  height: 54rpx;
+  position: absolute;
+  left: 60rpx;
+  top: 60rpx;
+  z-index: 100;
+  transform: rotate(-6deg);
+}
+.upload-info .upload-mess {
+  position: relative;
+  top: 48rpx;
+  width: 478rpx;
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 24rpx;
+  color: #666;
+}
+.mess-left, .mess-right {
+  width: 50%;
+  display: inline-block;
+}
+.mess-right {
+  text-align: right;
+}
+.time-icon {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}
+.card-envelope {
+  position: absolute;
+  top: 320rpx;
+  right: 68rpx;
+  width: 362rpx;
+  height: 612rpx;
+  transform: rotate(30deg);
+  transform-origin: center;
+  z-index: 1;
+}
+.upload-image-btn {
+  width: 50rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}

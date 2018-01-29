@@ -1,0 +1,74 @@
+.operation-button .button-have{
+  width: 570rpx;
+}
+.list-container {
+  margin: 38rpx 30rpx 0;
+}
+.music-li {
+  margin-bottom: 40rpx;
+  height: 66rpx;
+  display: flex;
+  justify-content: center;
+}
+.music-radio {
+  width: 46rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  border: 2rpx solid #fe2754;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.music-radio.is-checked {
+  background: linear-gradient(166deg, #fd6138, #fe2754);
+  border: none;
+  text-align: center;
+}
+.is-checked image{
+  display: inline-block;
+  width: 28rpx;
+  height: 20rpx;
+  position: relative;
+}
+.music-index {
+  font-size: 28rpx;
+  margin-right: 22rpx;
+  position: relative;
+  top: 6rpx;
+}
+.music-info {
+  position: relative;
+  top: -10rpx;
+  margin-right: 84rpx;
+}
+.music-info text {
+  display: block;
+}
+.music-title {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  width: 418rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.music-type {
+  font-size: 24rpx;
+  color: #c6c6c6;
+}
+.music-status {
+  width: 62rpx;
+  height: 62rpx;
+  line-height: 68rpx;
+  border-radius: 50%;
+  background: #fe2754;
+  text-align: center;
+}
+.music-status.is-ios {
+  line-height: 70rpx;
+}
+.music-status image {
+  display: inline-block;
+  width: 30rpx;
+  height: 34rpx;
+}

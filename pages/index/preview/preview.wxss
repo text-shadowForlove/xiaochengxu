@@ -1,0 +1,63 @@
+/* pages/index/preview/preview.wxss */
+
+page {
+    width: 100%;
+    background: red;
+}
+
+.container {
+    width: 100%;
+    padding: 0;
+    position: relative;
+}
+
+/*此处不能用flex布局  ios10以下不适配 */
+
+.img-container {
+    width: 100%;
+    position: relative;
+    padding: 0;
+    animation: autoLoop 4s linear 2s infinite;
+}
+
+.entry-background {
+    width: 100%;
+    height: 1240rpx;
+}
+
+.entry-img {
+    position: absolute;
+    width: 340rpx;
+    height: 620rpx;
+    top: -620rpx;
+    left: 205rpx;
+    animation: autoDecline 2s ease 1 forwards;
+    /*下降动画*/
+}
+
+@keyframes autoDecline {
+    from {}
+    to {
+        transform: translateY(1000rpx)scale(1.9)
+    }
+}
+
+@keyframes autoLoop {
+    0% {}
+    33% {
+        transform: translateY(-40rpx)
+    }
+    66% {
+        transform: translateY(40rpx)
+    }
+}
+
+.nav-btn {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    background: transparent;
+    position: absolute;
+    top: 790rpx;
+    left: 270rpx;
+}

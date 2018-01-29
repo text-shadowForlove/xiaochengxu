@@ -1,0 +1,6 @@
+<view class="container">
+    <view class="img-container">
+        <image class="entry-img" src="../../../images/entry.png"></image>
+        <view bindtap="openCard" class="nav-btn"></view>
+    </view>
+</view>

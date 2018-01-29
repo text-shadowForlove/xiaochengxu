@@ -1,0 +1,25 @@
+<view class='container' style='background: url({{bgResourcePath}}) no-repeat;background-size: cover;'>
+  <view class='success-head'>
+    <text class='send-hint'>贺卡已经发送给Ta咯！</text>
+    <text class='send-praise'>Ta有你真好~</text>
+  </view>
+  <view class='success-award'>
+    <image class='discount-background' src='../../../images/discount-back.png'></image>
+    <view class='discount-show'>
+      <view class='award-head'>
+        <image class='share-success' src='../../../images/share-success.png'></image>
+        <text>您还获得一张抵用券</text>
+      </view>
+      <view class='award-content'>
+        <text class='award-name'>抵用券</text>
+        <view class='award-type'><image src='../../../images/200.png'></image></view>
+        <text class='award-explain'>抵用券可用于购买一说宝宝智能机器人，无限制门槛。</text>
+        <text class='award-indate'>有效期： 2018.01.28-2018.3.28</text>
+        <view class='award-button'>
+          <view class='button-have' bindtap='goUseAward'>去使用</view>
+          <view class='{{isIos ? "button-nohave-ios" : "button-nohave"}}' bindtap='goMarkCardAgain'>继续制作贺卡</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

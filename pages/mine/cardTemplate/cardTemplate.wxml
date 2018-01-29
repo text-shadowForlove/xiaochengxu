@@ -1,0 +1,19 @@
+// myCards的循环模板
+<template name="cardTemplate">
+    <view class="card-details">
+        <image src="{{card.showTimeOrMoney.picturePath}}"></image>
+        <view class="title-date">
+            <text class="card-title">{{card.showTimeOrMoney.cardTitle}}</text>
+            <text class="date">{{card.showTimeOrMoney.creatTime}}</text>
+        </view>
+        <view class="info-container">
+            <text wx:if="{{card.showTimeOrMoney.showStatus}}" class="info-time">{{card.showTimeOrMoney.showInfo}}</text>
+            <view wx:else class="info-author">
+                <text class=".fromText">from:</text>
+                <text class="author">{{card.showTimeOrMoney.senderName}}</text>
+            </view>
+        </view>
+        <text wx:if="{{card.isCard}}" class="cardOrtime">{{card.showTimeOrMoney.cardType}}</text>
+        <navigator class="check-all" url="{{card.navigateTo}}">点击查看</navigator>
+    </view>
+</template>

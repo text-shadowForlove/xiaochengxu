@@ -1,0 +1,26 @@
+<!--pages/index/preview/envelope/envelope.wxml-->
+<view class="page-container">
+    <view class="msc">
+        <image bindtap="musicPlayStatus" src="{{musicPath[0]}}"></image>
+    </view>
+    <view class="envelope-box">
+        <!-- 不要调整容器的位置 不然会出错 -->
+        <image class="lid-bottom" mode='aspectFill' src="/images/lid-bottom.png"></image>
+        <image bindtap="toggleImg" mode='aspectFill' class="upload" src="{{imgPath[0]}}"></image>
+        <image class="muban" mode='aspectFill' src="{{imgPath[1]}}"></image>
+        <image class="lid-top" src="/images/lid-top.png"></image>
+        <image class="lid-footer" mode='aspectFill' src="/images/lid-footer.png"></image>
+    </view>
+    <view wx:if="{{haveRedPackets?false:true}}" class="giving-hongbao">
+        <image class="bg-hongbao" src="/images/bg-hongbao.png"></image>
+        <image bindtap="giveHongBao" class="hongbao-img" src="/images/givehongbao.png"></image>
+    </view>
+    <view wx:if="{{haveRedPackets}}" class="giving-hongbao">
+        <image class="bg-hongbao" src="/images/bg-hongbao.png"></image>
+        <image class="hongbao-img" src="/images/get-hongbao.png"></image>
+    </view>
+    <!-- 有红包 先弹出支付窗口再发布-->
+    <view wx:if="{{haveRedPackets}}" bindtap="payWay" class="pay-issue">支付并发布</view>
+    <!-- 没有红包 直接发布按钮 需要跳转页面 -->
+    <navigator wx:else class="pay-issue" url="../../sendFriend/sendFriend">直接发布</navigator>
+</view>

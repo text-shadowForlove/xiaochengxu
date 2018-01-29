@@ -1,0 +1,76 @@
+.card-details {
+    margin-top: 36rpx;
+    width: 630rpx;
+    height: 148rpx;
+    background-color: #fff;
+    border-radius: 8rpx;
+    padding: 24rpx 30rpx;
+}
+
+image {
+    width: 186rpx;
+    height: 148rpx;
+    float: left;
+    margin-right: 30rpx;
+}
+
+.title-date {
+    height: 28rpx;
+    margin-bottom: 14rpx;
+}
+
+.card-title {
+    font-size: 28rpx;
+    color: #000;
+    font-weight: bold;
+    float: left;
+}
+
+.date {
+    float: right;
+    font-size: 24rpx;
+    color: #444d5c;
+}
+
+.info-container {
+    height: 72rpx;
+    color: #444d5c;
+    font-size: 24rpx;
+}
+
+.info-container .info-time {
+    line-height: 34rpx;
+}
+
+.info-container .info-author {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-author .fromText {
+    color: #ccc;
+}
+
+.info-author .author {
+    font-size: 28rpx;
+    line-height: 38rpx;
+    color:#444d5c;
+}
+
+.cardOrtime {
+    font-size: 24rpx;
+    color: #444d5c;
+}
+
+.check-all {
+    width: 114rpx;
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+    float: right;
+    color: #fff;
+    font-size: 22rpx;
+    background: linear-gradient(166deg, #fd6138, #fe2754);
+    border-radius: 8rpx;
+    margin-bottom: 12rpx;
+}

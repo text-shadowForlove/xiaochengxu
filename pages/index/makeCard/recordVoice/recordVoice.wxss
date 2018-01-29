@@ -1,0 +1,141 @@
+.choice-music {
+  text-align: left;
+  width: 690rpx;
+  margin: 0 auto;
+}
+.choice-title {
+  display: block;
+  margin: 36rpx 0;
+  color: #000;
+  font-size: 32rpx;
+}
+.choice-music button{
+  display: inline-block;
+}
+.music-info {
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fe2754;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 400rpx;
+}
+.music-info image {
+  height: 36rpx;
+  width: 32rpx;
+  margin-right: 24rpx;
+  position: relative;
+  top: 8rpx;
+}
+.see-music-list {
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #fe2754;
+  border-radius: 8rpx;
+  color: #fe2754;
+  padding: 0 30rpx;
+  float: right;
+}
+.record-cue-words {
+  width: 690rpx;
+  margin: 40rpx auto 0;
+}
+.cue-words-title {
+  font-size: 32rpx;
+  color: #000;
+}
+.edit-hint {
+  margin-left: 12rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.change-cue-words {
+  display: inline-block;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 22rpx;
+  border: 2rpx solid #fe2754;
+  border-radius: 8rpx;
+  color: #fe2754;
+  float: right;
+  padding: 0 12rpx;
+  position: relative;
+  top: -46rpx;
+}
+.change-cue-words image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+  position: relative;
+  top: 8rpx;
+}
+.cue-words-content {
+  margin: 36rpx 0;
+}
+.cue-words-content .content-text {
+  margin: 62rpx auto;
+  width: 666rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.cue-words-content image {
+  width: 44rpx;
+  height: 40rpx;
+}
+.content-right {
+  transform: rotate(180deg);
+  position: relative;
+  margin-left: 636rpx;
+}
+.record-status {
+  text-align: center;
+  position: fixed;
+  bottom: 160rpx;
+  width: 100%;
+}
+.record-status text {
+  display: block;
+}
+.recording-time {
+  font-size: 32rpx;
+  color: #000;
+  height: 36rpx;
+}
+.btn-radius {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: linear-gradient(166deg, #fd6138, #fe2754);
+  margin: 24rpx auto;
+}
+.btn-radius image{
+  width: 48rpx;
+  height: 88rpx;
+  position: relative;
+  top: 30rpx;
+}
+.btn-radius .play-voice-img {
+  width: 50rpx;
+  height: 60rpx;
+  position: relative;
+  top: 42rpx;
+}
+.record-text {
+  font-size: 32rpx;
+  color: #000;
+}
+.record-hint-text {
+  font-size: 24rpx;
+  color: #999;
+}
+.record-again {
+  width: 42rpx;
+  height: 36rpx;
+}

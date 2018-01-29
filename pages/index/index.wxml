@@ -1,0 +1,35 @@
+<view class='create-container' style='background: url({{defaultTemplate.bg_resource_path}}) no-repeat;background-size: cover'>
+  <view class='index-image'>
+    <image class='envelope-image' mode='aspectFill' src='../../images/envelope.png'></image>    
+    <image class='upload-image' mode='aspectFill' src='{{defaultTemplate.default_resource_path}}'></image>
+    <image class='cover-image' mode='aspectFill' src='{{defaultTemplate.resource_path}}'></image>
+  </view>
+  <view class='create-card button-have' data-templateid='{{defaultTemplate.id}}' bindtap='goMakeCard'>创建我的语音贺卡</view>
+</view>
+<view class='show-container'>
+  <view class='data-show'>
+    <view>
+      已有
+      <view class='card-number' wx:for='{{makeCardNum}}' wx:key='unique'>{{item}}</view>
+      人制作了语音贺卡发给朋友
+    </view>
+    <view>
+      有
+      <view class='card-number' wx:for='{{receivedCardNum}}' wx:key='unique'>{{item}}</view>
+      人收到了朋友的贺卡祝福
+    </view>
+  </view>
+  <view class='template-show'>
+    <view class='template-head'>
+      <image class='head-left' mode='aspectFill' src='../../images/left-flower.png'></image>
+      <image class='head-middle' mode='aspectFill' src='../../images/middle-text.png'></image>
+      <image class='head-right' mode='aspectFill' src='../../images/right-flower.png'></image>
+    </view>
+    <view class='template-content'>
+      <view class='template-row' wx:for='{{templateRow}}' wx:for-item="itemRow" wx:key='unique'>
+        <image bindtap='goMakeCard' data-templateid='{{item.id}}' class='{{index==2?"last-image":""}} row-image' mode='aspectFill' wx:for='{{itemRow}}' src='{{item.resource_path}}' wx:key='unique'></image>
+        <image class='row-radian' src='../../images/card-solt.png'></image>
+      </view>
+    </view>
+  </view>
+</view>

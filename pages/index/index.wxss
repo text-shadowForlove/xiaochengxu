@@ -1,0 +1,116 @@
+/**index.wxss**/
+.create-container {
+  background: #dc181c;
+  height: 768rpx;
+  text-align: center;
+}
+.create-container .index-image {
+  height: 768rpx;
+}
+.envelope-image, .upload-image {
+  width: 336rpx;
+  height: 574rpx;
+  position: relative;
+  z-index: 1;
+  top: 156rpx;
+}
+.envelope-image {
+  transform: rotate(-16deg);
+  left: 50rpx;
+}
+.upload-image {
+  transform: rotate(16deg);
+  right: 50rpx;
+}
+.cover-image {
+  width: 408rpx;
+  height: 724rpx;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  top: -540rpx;
+}
+.create-card.button-have {
+  width: 520rpx;
+  position: relative;
+  top: -112rpx;
+  z-index: 100;
+  display: block;
+}
+.show-container {
+  background: #fdf8e6;
+  padding-top: 30rpx;
+}
+.show-container .data-show {
+  background: #fdf8e6;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 74rpx;
+}
+.card-number {
+  background: linear-gradient(#fe2754, #fd6138);
+  width: 38rpx;
+  height: 56rpx;
+  margin-right: 5rpx;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  font-size: 46rpx;
+  line-height: 56rpx;
+}
+.template-show {
+  overflow: hidden;
+}
+.template-head {
+  display: flex;
+  height: 166rpx;
+  overflow: hidden;
+}
+.head-left, .head-middle, .head-right {
+  display: inline-block;
+}
+.head-left {
+  width: 214rpx;
+  height: 76rpx;
+  position: relative;
+  top: 46rpx;
+}
+.head-middle {
+  width: 348rpx;
+  height: 166rpx;
+}
+.head-right {
+  width: 188rpx;
+  height: 68rpx;
+  position: relative;
+  top: 50rpx;
+}
+.template-content {
+  margin: 0 0 30rpx;
+  position: relative;
+}
+.template-row {
+  width: 653rpx;
+  height: 320rpx;
+  margin: 0 auto 50rpx;
+}
+.template-row .row-radian {
+  width: 750rpx;
+  height: 128rpx;
+  position: relative;
+  left: -50rpx;
+  top: -80rpx;
+  z-index: 10;
+}
+.template-row .row-image {
+  width: 180rpx;
+  height: 320rpx;
+  display: inline-block;
+  margin-right: 56rpx;
+  box-shadow: 0 26rpx 40rpx #bfbbbb;
+  position: relative;
+  z-index: 1;
+}
+.template-row .row-image.last-image {
+  margin-right: 0;
+}

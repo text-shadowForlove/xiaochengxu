@@ -1,0 +1,103 @@
+.have-container {
+  height: 100%;
+  background: #f5efef;
+  text-align: center;
+}
+.pay-container {
+  width: 690rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  color: #000;
+}
+.pay-title {
+  display: block;
+  padding: 36rpx 0;
+}
+.cutting-line .line, .cutting-line text {
+  display: inline-block;
+}
+.cutting-line .line {
+  height: 2rpx;
+  background: #c1c1c1;
+  width: 280rpx;
+  position: relative;
+  top: 18rpx;
+}
+.line-left {
+  float: left;
+}
+.line-right {
+  float: right;
+}
+.pay-input {
+  background: #fff;
+  border-radius: 10rpx;
+  height: 102rpx;
+  line-height: 102rpx;
+  margin-top: 36rpx;
+  display: flex;
+}
+.input-label {
+  margin-left: 24rpx;
+}
+.input-unit {
+  margin-left: 24rpx;
+  margin-right: 36rpx;
+}
+.pay-input input {
+  flex: auto;
+  text-align: right;
+  position: relative;
+  top: 24rpx;
+  font-weight: bold;
+}
+.pay-input .placeholder {
+  font-weight: normal;
+  color: #c6c6c6;
+}
+.pay-other-info {
+  background: #fff;
+  border-radius: 10rpx;
+  margin: 36rpx auto;
+}
+.pay-money-list {
+  padding-top: 36rpx;
+  text-align: center;
+}
+.pay-money {
+  display: inline-block;
+  width: 118rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 28rpx;
+  color: #fe2754;
+  border: 4rpx solid #fe2754;
+  border-radius: 8rpx;
+  margin-right: 36rpx;
+  margin-bottom: 40rpx;  
+}
+.pay-money.row-last {
+  margin-right: 0;
+}
+.pay-money.is-choiced {
+  background: #fe2754;
+  color: #fff;
+}
+.user-money {
+  font-size: 24rpx;
+  color: #37444d;
+  overflow: hidden;
+}
+.user-money text {
+  margin: 2rpx 36rpx 36rpx;
+}
+.have-money {
+  float: left;
+}
+.need-pay-money {
+  float: right; 
+}
+.warm-prompt {
+  font-size: 24rpx;
+  color: #37444d;
+}

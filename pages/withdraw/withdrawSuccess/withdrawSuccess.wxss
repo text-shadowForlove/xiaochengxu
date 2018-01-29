@@ -1,0 +1,72 @@
+.container {
+  background: #f5efef;
+}
+.success-head {
+  background: linear-gradient(166deg, #fd6138, #fe2754);
+  width: 100%;
+  height:270rpx;
+  text-align: center;
+  color: #fffefe;
+  font-size: 32rpx;
+}
+.success-icon {
+  width: 142rpx;
+  height: 142rpx;
+  margin: 36rpx auto 16rpx;
+}
+.withdraw-message {
+  width: 678rpx;
+  margin: 36rpx auto;
+  position: relative;
+  overflow: auto;
+}
+.message-background {
+  width: 678rpx;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.message-list, .message-hnit {
+  position: relative;
+  z-index: 10;
+}
+.message-list {
+  height: 306rpx;
+}
+.message-item {
+  margin: 36rpx 0 36rpx 60rpx;
+  color: #010101;
+}
+.message-item.is-last {
+  margin-left: 30rpx;
+}
+.item-title {
+  font-size: 32rpx;
+  margin-right: 58rpx;
+}
+.item-value {
+  font-size: 28rpx;
+}
+.see-withdraw-history {
+  float: right;
+  font-size: 24rpx;
+  margin-right: 30rpx;
+  color: #fe2754;
+  text-decoration: underline;
+  margin-top: 4rpx;
+}
+.message-hnit {
+  height: 246rpx;
+  font-size: 24rpx;
+  opacity: 0.4;
+  color: #000; 
+  margin: 0 60rpx;
+}
+.message-hnit view {
+  padding-top: 64rpx;
+  position: relative;
+  left: -12rpx;
+}
+.message-hnit text {
+  line-height: 48rpx;
+}

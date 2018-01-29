@@ -1,0 +1,8 @@
+<!-- 发送微信页面 -->
+<view class="container" style='background: url({{bgResourcePath}}) no-repeat;background-size: cover;'>
+    <view class="img-container">
+        <image class="entry-img" src="../../../images/entry.png"></image>
+        <view bindtap="openCard" class="nav-btn"></view>
+    </view>
+    <button open-type="share" class="send">发送给微信好友</button>
+</view>

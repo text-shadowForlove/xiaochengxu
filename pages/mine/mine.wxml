@@ -1,0 +1,12 @@
+<!--pages/mine/mine.wxml-->
+
+<import src="./cardTemplate/mineInnerTemplate.wxml"></import>
+<view class="page-container">
+    <view class="user">
+        <image src="{{userInfo.wx_avatar}}"></image>
+        <text class="userName">{{userInfo.wx_name}}</text>
+    </view>
+    <block wx:for="{{cardData}}" wx:for-item="card" wx:key="*this">
+        <template is="mineInnerTemplate" data="{{card}}"></template>
+    </block>
+</view>

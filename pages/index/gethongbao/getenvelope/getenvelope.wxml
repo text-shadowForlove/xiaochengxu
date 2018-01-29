@@ -1,0 +1,68 @@
+<view class="page-container">
+    <view class="msc">
+        <image bindtap="musicPlayStatus" src="{{musicPath[0]}}"></image>
+    </view>
+    <view class="envelope-box">
+        <!-- 不要调整容器的位置 不然会出错 -->
+        <image class="lid-bottom" mode='aspectFill' src="/images/lid-bottom.png"></image>
+        <image bindtap="toggleImg" mode='aspectFill' class="upload" src="{{imgPath[0]}}"></image>
+        <image class="muban" mode='aspectFill' src="{{imgPath[1]}}"></image>
+        <image class="lid-top" src="/images/lid-top.png"></image>
+        <image class="lid-footer" mode='aspectFill' src="/images/lid-footer.png"></image>
+    </view>
+    <!-- 红包状态 -->
+    <view wx:if="{{haveRedPackets}}" class="giving-hongbao">
+        <image class="bg-hongbao" src="/images/bg-hongbao.png"></image>
+        <image bindtap="seeEnvelope" class="hongbao-img" src="/images/get-hongbao.png"></image>
+    </view>
+    <button class="pay-issue" bindtap="backIndex">制作贺卡发给朋友</button>
+
+
+    <!--查看红包弹窗 -->
+    <view wx:if="{{lookHongBao}}" class="envelope-popup">
+        <!-- 拼手气领红包成功 -->
+        <view wx:if="{{getHongbaoStatus.success}}" class="envelope-details">
+            <image class="popup-baby" src="/images/popup.png"></image>
+            <image bindtap="closeHongBao" class="close-popup" src="/images/close-popup.png"></image>
+            <text class="popup-title">拼手气红包</text>
+            <text class="yishuo-text">他托一说宝宝机器人送了你红包哦~</text>
+            <text class="popup-price">¥8.88</text>
+            <view class="line"></view>
+            <text class="balance-text">已存入用户余额</text>
+            <view class="line"></view>
+            <button class="withdraw">去提现</button>
+            <navigator class="look-all" url="../../preview/redMoneySituation/redMoneySituation">看看大家手气</navigator>
+        </view>
+
+        <!-- 拼手气已经领取过红包 -->
+        <view wx:if="{{getHongbaoStatus.alreadyGetted}}" class="envelope-details">
+            <image class="popup-baby" src="/images/popup.png"></image>
+            <image bindtap="closeHongBao" class="close-popup" src="/images/close-popup.png"></image>
+            <text class="popup-title">拼手气红包</text>
+            <text class="drawed">您已领取过该红包~</text>
+            <button class="withdraw">去提现</button>
+            <navigator class="look-all" url="../../preview/redMoneySituation/redMoneySituation">看看大家手气</navigator>
+        </view>
+
+
+        <!-- 拼手气红包已经被抢光 -->
+        <view wx:if="{{getHongbaoStatus.noHave}}" class="envelope-details">
+            <image class="popup-baby" src="/images/nopopup.png"></image>
+            <image bindtap="closeHongBao" class="close-popup" src="/images/close-popup.png"></image>
+            <text class="popup-title">拼手气红包</text>
+            <text class="drawed">红包已经被抢光了~</text>
+            <navigator class="look-all" url="../../preview/redMoneySituation/redMoneySituation">看看大家手气</navigator>
+        </view>
+
+        <!-- 红包过时了 -->
+        <view wx:if="{{getHongbaoStatus.timeOver}}" class="envelope-details">
+            <image class="popup-baby" src="/images/popup.png"></image>
+            <image bindtap="closeHongBao" class="close-popup" src="/images/close-popup.png"></image>
+            <text class="popup-title">拼手气红包</text>
+            <text class="guoshi-top">超过24小时未领取</text>
+            <text class="guoshi-bottom">红包已过时</text>
+            <navigator class="look-all" url="../../preview/redMoneySituation/redMoneySituation">看看大家手气</navigator>
+        </view>
+
+    </view>
+</view>

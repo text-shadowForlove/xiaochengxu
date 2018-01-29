@@ -1,0 +1,152 @@
+page {
+    perspective: 500rpx;
+    width: 750rpx;
+    height: 790rpx;
+    background: red;
+    overflow: hidden;
+}
+
+.page-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.msc {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    background: pink;
+    position: absolute;
+    z-index: 1001;
+    transform: translateZ(20rpx);
+    right: 30rpx;
+    top: -390rpx;
+}
+
+.msc image {
+    width: 72rpx;
+    height: 72rpx;
+}
+
+.giving-hongbao {
+    position: absolute;
+    width: 327rpx;
+    height: 327rpx;
+    left: 212rpx;
+    transform: translateZ(20rpx);
+}
+
+.giving-hongbao image {
+    position: absolute;
+}
+
+.giving-hongbao .bg-hongbao {
+    width: 327rpx;
+    height: 327rpx;
+}
+
+.giving-hongbao .hongbao-img {
+    width: 275rpx;
+    height: 200rpx;
+    left: 26rpx;
+}
+
+.pay-issue {
+    position: fixed;
+    width: 520rpx;
+    height: 91rpx;
+    border-radius: 46rpx;
+    left: 114rpx;
+    bottom: 90rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 91rpx;
+    letter-spacing: 8rpx;
+    background: linear-gradient(to right, #fe6338, #fd2954);
+    transform: translateZ(20rpx);
+}
+
+.envelope-box {
+    margin-top: 450rpx;
+    width: 670rpx;
+    height: 375rpx;
+    margin-left: 40rpx;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.envelope-box image {
+    width: 670rpx;
+    height: 375rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.envelope-box .lid-top {
+    width: 670rpx;
+    height: 188rpx;
+    transform-origin: top center;
+    animation: open 1s linear 1 forwards;
+}
+
+.envelope-box .lid-footer {
+    transform: translateZ(1rpx)
+}
+
+.lid-bottom {
+    transform: rotateZ(-1rpx);
+}
+
+.envelope-box .upload,
+.envelope-box .muban {
+    transform: rotateZ(90deg);
+    left: 210rpx;
+    height: 470rpx;
+    width: 315rpx;
+    top: -75rpx;
+}
+
+.envelope-box .upload {
+    animation: openRight 2s ease 1.2s 1 forwards;
+}
+
+.envelope-box .muban {
+    animation: openLeft 2s ease 1s 1 forwards;
+}
+
+@keyframes open {
+    from {}
+    to {
+        transform-origin: top center;
+        transform: rotateX(181deg);
+    }
+}
+
+@keyframes openLeft {
+    33% {
+        transform: rotateZ(90deg)rotateZ(-15deg)translateX(-60rpx);
+    }
+    66% {
+        transform: rotateZ(90deg)rotateZ(-15deg)translateX(-60rpx)translateX(-500rpx)rotateZ(-75deg)scale(1.5)translateZ(2rpx);
+    }
+    100% {
+        transform: rotateZ(90deg)rotateZ(-15deg)translateX(-60rpx)translateX(-500rpx)rotateZ(-75deg)scale(1.5)translateZ(2rpx)translateY(390rpx)translateX(70rpx)scale(1.4);
+        z-index: 1000;
+    }
+    /* ios10操作系统不支持2d的z-index   andriod不支持 3d的translateZ的层级变化   为了兼容既要写translateZ也要写z-index */
+}
+
+@keyframes openRight {
+    33% {
+        transform: rotateZ(90deg)rotateZ(15deg)translateX(-60rpx);
+    }
+    66% {
+        transform: rotateZ(90deg)rotateZ(15deg)translateX(-60rpx)translateX(-500rpx)rotateZ(-105deg)scale(1.5)translateZ(2rpx);
+    }
+    100% {
+        transform: rotateZ(90deg)rotateZ(15deg)translateX(-60rpx)translateX(-500rpx)rotateZ(-105deg)scale(1.5)translateZ(2rpx)translateY(390rpx)translateX(-60rpx)rotateZ(8deg)scale(1.2);
+        z-index: 1000;
+    }
+}

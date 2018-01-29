@@ -1,0 +1,14 @@
+<view class='container' style='background: url({{templateInfo.bg_resource_path}}) no-repeat;background-size: cover;'>
+  <view class='show-template'>
+    <image class='template-cover' mode='aspectFill' src='{{templateInfo.resource_path}}'></image>
+    <image class='template-uplaod' mode='aspectFill' src='{{templateInfo.default_resource_path}}'></image>
+    <image class='template-envelope' mode='aspectFill' src='../../../../images/envelope.png'></image>
+  </view>
+  <view class='operation-button'>
+    <view class='button-have' bindtap='getTemplateInfo'>
+      <image class='change-template' src='../../../../images/change-template.png'></image>
+      换一张
+    </view>
+    <view class='{{isIos ? "button-nohave-ios" : "button-nohave"}}' bindtap='goUploadImg'>下一步</view>
+  </view>
+</view>

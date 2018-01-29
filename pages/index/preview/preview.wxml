@@ -1,0 +1,7 @@
+<view class="container">
+    <!-- <image class="entry-background" src="../../../images/entry-background.png"></image> -->
+    <view class="img-container">
+        <image class="entry-img" src="../../../images/entry.png"></image>
+        <view bindtap="openCard" class="nav-btn"></view>
+    </view>
+</view>

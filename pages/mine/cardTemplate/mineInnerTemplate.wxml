@@ -1,0 +1,13 @@
+<import src="./cardTemplate.wxml" />
+<template name="mineInnerTemplate">
+    <view class="Cards">
+        <text class="card-type"> {{card.cardType}} </text>
+        <text class="count">({{card.count}})</text>
+        <view class="card-container" wx:if="{{card.count?true:false}}">
+            <template is="cardTemplate" data="{{card}}"></template>
+        </view>
+        <view class="nocard-container" wx:else>
+            <text class="nocard">{{card.noCountText}}</text>
+        </view>
+    </view>
+</template>

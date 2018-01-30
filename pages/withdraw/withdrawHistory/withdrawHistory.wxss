@@ -24,14 +24,11 @@ page{
   background-color: #fff;
   opacity: 50%;
   border-bottom: #F5EFEF 2rpx solid;
+  text-align: center;
 }
-.historyContainer .historyInfo text.date{
-  margin-left: 114rpx;
-  margin-right: 121rpx;
-}
-.historyContainer .historyInfo text.statue{
-  margin-left: 118rpx;
-  margin-right: 110rpx;
+.historyContainer .historyInfo text {
+  display: inline-block;
+  width: 224rpx;
 }
 .historyContainer .historybottom{
   width: 674rpx;
@@ -40,6 +37,7 @@ page{
   background-color: #fff;
   opacity: 10%;
   box-shadow: 0rpx 3rpx 3rpx #f5c7c7;
+  text-align: center;
 }
 .historyContainer .noHistory{
   text-align: center;
@@ -47,23 +45,16 @@ page{
   color:#a3a3a3;
 }
 .historyContainer .historybottom .historyList{
-  width: 630rpx;
+  width: 674rpx;
   margin: 0 auto;
   padding: 36rpx 0;
   border-bottom: #F5EFEF 2rpx solid;
+  text-align: center;
 }
 .historyContainer .historybottom text{
-  width: 130rpx;
-  text-align: center;
+  width: 224rpx;
   color: #000;
-}
-.historyContainer .historybottom text.date{
-  margin-left: 52rpx;
-  margin-right: 90rpx;
-}
-.historyContainer .historybottom text.statue{
-  margin-left: 120rpx;
-  margin-right: 66rpx
+  display: inline-block;
 }
 .historyContainer .historybottom .check text.statue{
   color:red;

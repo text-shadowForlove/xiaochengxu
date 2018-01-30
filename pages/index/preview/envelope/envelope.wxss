@@ -1,7 +1,7 @@
 page {
     perspective: 500rpx;
-    width: 750rpx;
-    height: 790rpx;
+    width: 100%;
+    height: 100%;
     background: red;
     overflow: hidden;
 }
@@ -9,6 +9,9 @@ page {
 .page-container {
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
     position: relative;
 }
 
@@ -21,7 +24,7 @@ page {
     z-index: 1001;
     transform: translateZ(20rpx);
     right: 30rpx;
-    top: -390rpx;
+    top: 42rpx;
 }
 
 .msc image {
@@ -58,7 +61,7 @@ page {
     height: 91rpx;
     border-radius: 46rpx;
     left: 114rpx;
-    bottom: 90rpx;
+    bottom: 40rpx;
     color: #fff;
     text-align: center;
     line-height: 91rpx;

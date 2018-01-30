@@ -8,15 +8,15 @@
       <view class='withdraw-money-title'>提现金额</view>
       <view class='withdraw-money-input'>
         <text>¥</text> 
-        <input type='digit' focus='{{withdrawFocus}}' value='{{withdrawMoney}}' bindblur='changeWithdrawMoney'></input>
+        <input type='digit' focus='{{withdrawFocus}}' value='{{withdrawMoney}}' bindinput='checkDecimals' bindblur='changeWithdrawMoney'></input>
       </view>
       <view class='cutting-line'></view>
       <view class='withdraw-hint'>
-        <view wx:if='{{isValidMoney || isZero}}'>
+        <view wx:if='{{isValidMoney}}'>
           <text>提现到微信钱包， </text>
           <text class='withdraw-all' bindtap='changeWithdrawMoney'>全部提现</text>
         </view>
-        <view wx:else class='not-valid-money'>输入金额大于用户余额</view>
+        <view wx:else class='not-valid-money'>{{enterHint}}</view>
       </view>
       <view class='withdraw-btn'>
         <button class='button-have {{withdrawMoney=="" || !isValidMoney ? "is-disabled" : ""}}' bindtap='withdrawOut'>提现</button>
@@ -24,5 +24,5 @@
       <view class='to-date-hint'>一到五个工作日到账</view>
     </view>
   </view>
-  <view class='all-withdraw-detail' bindtap='goWithdrawList'>提现明细</view>
+  <view class='all-withdraw-detail' bindtap='goWithdrawHistory'>提现明细</view>
 </view>

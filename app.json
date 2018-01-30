@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/index/gethongbao/gethongbao",
     "pages/index/preview/preview",
     "pages/index/gethongbao/getenvelope/getenvelope",
     "pages/index/sendFriend/sendFriend",
     "pages/index/preview/envelope/envelope",
-    "pages/index/index",
     "pages/mine/myCards/myCards",
     "pages/index/preview/redMoneySituation/redMoneySituation",
     "pages/index/shareSucceed/shareSucceed",

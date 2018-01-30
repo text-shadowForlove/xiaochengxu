@@ -6,12 +6,11 @@ Page({
     cardData: []
   },
   getParam: {
-    //user_id: app.globalData.userInfo.user_id,
-    user_id: 86974,
+    user_id: 0,
     page: 1,
     per_page: 6
   },
-  navigateTo: 'pages/index/gethongbao/gethongbao?cardId=',
+  navigateTo: '../../index/gethongbao/gethongbao?cardId=',
   totalCount: 0,
   onLoad: function (options) {
 
@@ -20,9 +19,11 @@ Page({
     if (!app.globalData.userInfo) {
       app.loginYishuo();
       app.userInfoCallback = () => {
+        this.getParam.user_id = app.globalData.userInfo.user_id;
         this.getMyCardList();
       }
     } else {
+      this.getParam.user_id = app.globalData.userInfo.user_id;
       this.getMyCardList();
     }
   },
@@ -75,12 +76,12 @@ Page({
     })
   },
   //下拉刷新
-  onPullDownRefresh() {
+  /*onPullDownRefresh() {
     this.getParam.page = 1;
     this.getMyCardList(()=>{
       wx.stopPullDownRefresh();
     });
-  },
+  },*/
   //上拉加载
   onReachBottom: function () {
     if (this.getParam.page * this.getParam.per_page >= this.totalCount){

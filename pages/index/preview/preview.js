@@ -3,18 +3,22 @@ const app = getApp();
 const util = require('../../../utils/util.js');
 Page({
   data: {
-    animation: {}
+    timeId: ''
   },
   onLoad: function (options) {
-    setTimeout(function () {
+    let timeId = setTimeout(function () {
       wx.navigateTo({
-        url: "./envelope/envelope?fromPreview=" + true
+        url: "./envelope/envelope"
       })
-    }, 5000)
+    }, 5000);
+    this.setData({
+      timeId: timeId
+    })
   },
   openCard: function () {
     wx.navigateTo({
       url: "./envelope/envelope"
-    })
-  },
+    });
+    clearTimeout(this.data.timeId);
+  }
 })

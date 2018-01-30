@@ -20,7 +20,7 @@ Page({
       title: '上传图片'
     })
   },
-  //上传本地图片
+  //选择本地图片
   choiceLocalImage() {
     wx.chooseImage({
       count: 1,
@@ -36,11 +36,12 @@ Page({
       },
     })
   },
+  //下一步：上传图片完成后跳到录音
   goRecordVoice() {
     if (this.data.isUpload) {
       let tempFilePaths = this.data.uplaodImage;
       wx.uploadFile({
-        url: util.urlData.baseAjaxUrlTrue + '/yishuo/api_web/upload/image',
+        url: util.urlData.baseAjaxUrl + '/yishuo/api_web/upload/image',
         filePath: tempFilePaths,
         name: 'file',
         formData: {},
@@ -48,10 +49,16 @@ Page({
           let serverRes = JSON.parse(res.data);
           if(serverRes.code == 200) {
             app.globalData.cardInfo.upload_picture_path = serverRes.data;
+            app.globalData.templateInfo.default_resource_path = util.handleSource(serverRes.data);
             wx.navigateTo({
               url: '../../makeCard/recordVoice/recordVoice'
             })
+          } else {
+            util.errorToast()
           }
+        },
+        fail: () => {
+          util.errorToast()
         }
       })
     } else {

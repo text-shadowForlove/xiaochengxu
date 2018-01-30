@@ -4,54 +4,77 @@ const util = require('../../../../utils/util.js');
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     imgPath: ["/images/upload.png ", "/images/muban.png"],
     musicPath: ["/images/msc.png", "/images/nomsc.png"],
     lookHongBao: false,
+    haveRedPackets: false,
+    getHongbaoStatus: '',
+    hongbaoTitle: '拼手气红包',
+    hongbaoMoney: 0,
+    getCardInfo: {},
+    isPlayingMusic: false
+  },
+  onLoad: function (options) {
+    console.log(app.globalData.getCardInfo);
+    this.setData({
+      getCardInfo: app.globalData.getCardInfo
+    });
+    if (app.globalData.getCardInfo.card_category == 2){
+      if (app.globalData.getCardInfo.red_envelopes_count == 1){
+        this.setData({
+          hongbaoTitle: '普通红包'
+        })
+      }
+    }
 
-    getHongbaoStatus: {
-      success: false,
-      alreadyGetted: false,
-      timeOver: true,
-      noHave: false
-    },
-    cardInfo: app.globalData.cardInfo,
-    card_id: ''
+    if (app.globalData.audioContext){
+      app.globalData.audioContext.src = app.globalData.getCardInfo.card_music;
+      app.globalData.audioContext.loop = true;
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
   },
   //音乐播放状态
   musicPlayStatus() {
-
     this.setData({
       musicPath: [this.data.musicPath[1], this.data.musicPath[0]]
     });
-
-    // if (this.data.musicPath[0] == "/images/msc.png") {
-    //   wx.playBackgroundAudio({
-    //     dataUrl: '',
-    //     title: '',
-    //     coverImgUrl: ''
-    //   })
-    // }
+    if (app.globalData.audioContext) {
+      if (this.data.isPlayingMusic){
+        app.globalData.audioContext.pause();
+      } else {
+        app.globalData.audioContext.play();
+      }
+    }
   },
-  //支付方式
-  payWay() {
-    wx.requestPayment({
-      'timeStamp': '',
-      'nonceStr': '',
-      'package': '',
-      'signType': 'MD5',
-      'paySign': '',
-      'success': function (res) {},
-      'fail': function (res) {}
-    })
-  },
-  //收到贺卡 查看红包
-  seeEnvelope() {
-    this.setData({
-      lookHongBao: true
+  //领取红包
+  receiveEnvelope() {
+    let getParam = {
+      user_id: app.globalData.userInfo.user_id,
+      card_id: app.globalData.getCardInfo.id
+    }
+    wx.request({
+      url: util.urlData.baseAjaxUrl + '/yishuo/api_web/reception/get_red_envelope',
+      header: { "content-Type": "application/x-www-form-urlencoded" },
+      method: 'post',
+      data: getParam,
+      success: res => {
+        if (res.data.code == 200 || res.data.code == 201 || res.data.code == 202 || res.data.code == 203){
+          this.setData({
+            lookHongBao: true,
+            getHongbaoStatus: res.data.code
+          });
+          if (res.data.code == 200) {
+            this.setData({
+              hongbaoMoney: res.data.data.get_red_envelopes_amount
+            })
+          }
+        } else {
+          
+        }
+      }
     })
   },
   //关闭红包
@@ -68,40 +91,11 @@ Page({
   },
   //回到首页
   backIndex() {
-    wx.switchTab({
-      url: '/pages/index/index' + "yishuo/api_web/reception/received_card_by_userId"
-    })
-  },
-  onLoad: function (options) {
-    let _this = this;
-    _this.setData({
-      card_id: options.card_id
-    })
-    let getParam = {
-      card_id: _this.data.card_id
+    if (app.globalData.recorderManager) {
+      app.globalData.audioContext.loop = false;
     }
-    console.log(options.card_id);
-
-    wx.request({
-      url: util.urlData.baseAjaxUrl + 'yishuo/api_web/reception/ get_send_greeting_card_list_by_userid',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: 'post',
-      data: getParam,
-      success: res => {
-        if (res.data.code == 200 || res.data.code == 202 || res.data.code == 201) {
-          console.log(res);
-
-        }
-      }
+    wx.switchTab({
+      url: '/pages/index/index'
     })
-
-    this.setData({
-      cardInfo: app.globalData.cardInfo,
-      haveRedPackets: app.globalData.haveRedPackets,
-      templateInfo: app.globalData.templateInfo,
-      //imgPath: [app.globalData.cardInfo.upload_picture_path, app.globalData.templateInfo.default_resource_path]
-    });
   }
 })

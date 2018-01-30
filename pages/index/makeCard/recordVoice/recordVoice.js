@@ -10,13 +10,13 @@ Page({
     recordHint: '不超过60秒哦',
     isPlayingMusic: false,
     isRecording: false,
-    isRecordEnd: true,
+    isRecordEnd: false,
     isPlayingVoice: false,
     isIos: app.globalData.systemInfo ? app.globalData.systemInfo.isIos : false
   },
   recordUrl: '',
   recordingTimer: null,
-  isFirstPlayVoice: true,   //用以判断是点击第一次播放还是暂停再播放
+  isFirstPlayVoice: true,   //用以判断试听是点击第一次播放还是暂停再播放
   voicePlayEndNum: 0,  //用以判断是更换到录音还是更换到背景音乐第二部分
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -33,8 +33,9 @@ Page({
       app.globalData.audioContextSecond.src = app.globalData.templateInfo.music_after_path;
     }
   },
+  //播放背景音乐
   playMusic() {
-    if (this.data.isRecording || this.data.isPlayingVoice){
+    if (this.data.isRecording || this.data.isPlayingVoice){  //录音中或试听录音中不允许播放
       let toastTitle;
       if (this.data.isRecording) toastTitle = '录音中';
       else toastTitle = '试听中';
@@ -70,6 +71,7 @@ Page({
     }
     this.isClickPlayMusic = true;
   },
+  //跳转到音乐库列表
   goMusicList(e) {
     if (this.data.isRecording) {
       wx.showToast({
@@ -83,6 +85,7 @@ Page({
       })
     }
   },
+  //更换提示词
   changeCureWords() {
     wx.request({
       url: util.urlData.baseAjaxUrl + '/yishuo/api_web/reception/get_random_document',
@@ -94,10 +97,16 @@ Page({
           this.setData({
             cueWords: res.data.data.document_desc
           })
+        } else {
+          util.errorToast()
         }
       },
+      fail: () => {
+        util.errorToast()
+      }
     })
   },
+  //判断点击按钮是录音还是播放
   recordOrPlay() {
     if (this.data.isPlayingMusic){
       this.setData({
@@ -111,7 +120,9 @@ Page({
       this.playVoice();
     }
   },
+  //录音
   recordVoice() {
+    console.log('11111111');
     if (app.globalData.recorderManager) {
       if (!this.data.isRecording) {
         app.globalData.recorderManager.start({ format: 'mp3' });
@@ -156,9 +167,10 @@ Page({
       this.isClickRecord = true;
     }
   },
+  //试听录音/暂停试听
   playVoice() {
     if (app.globalData.audioContext) {
-      if (this.data.isPlayingVoice) {
+      if (this.data.isPlayingVoice) {  //播放中点击为暂停
         this.setData({
           recordBtnImage: 'play',
           recordStatus: '点击继续播放',
@@ -176,7 +188,7 @@ Page({
           recordStatus: '试听中',
           isPlayingVoice: true
         })
-        if (this.isFirstPlayVoice) {
+        if (this.isFirstPlayVoice) {  //第一次点击播放，设置播放地址：背景音乐的第一段
           this.voicePlayEndNum = 0;
           app.globalData.audioContext.src = this.data.templateInfo.music_before_path;
           //app.globalData.audioContext.src = 'http://pic.ibaotu.com/00/41/67/67G888piCJu8.mp3';
@@ -195,9 +207,9 @@ Page({
         app.globalData.audioContext.onEnded(() => {
           if (this.data.isPlayingVoice) {
             this.voicePlayEndNum++;
-            if (this.voicePlayEndNum == 1) {
+            if (this.voicePlayEndNum == 1) {  //第一次播放完成，直接转为录音地址继续播放
               app.globalData.audioContext.src = this.recordUrl;
-            } else if (this.voicePlayEndNum == 2) {
+            } else if (this.voicePlayEndNum == 2) {  //第二次播放完成，播放第二个播放器（不再使用第一个是为了防止加载时间过长）
               app.globalData.audioContextSecond.play();
             } else {
               this.voicePlayEndNum = 0;
@@ -227,6 +239,7 @@ Page({
       this.isClickPlay = true;
     }
   },
+  //重新录制
   recordAgain() {
     this.setData({
       isRecording: false,
@@ -241,7 +254,7 @@ Page({
         isPlayingVoice: false
       })
       if (app.globalData.audioContext) {
-        // app.globalData.audioContext.stop()
+        //app.globalData.audioContext.stop()
         if (!app.globalData.audioContext.paused) app.globalData.audioContext.stop();
         if (!app.globalData.audioContextSecond.paused) app.globalData.audioContextSecond.stop();
       };
@@ -249,6 +262,7 @@ Page({
     this.isFirstPlayVoice = true;
     this.voicePlayEndNum = 0;
   },
+  //下一步：上传录音完成后跳转到包红包
   goGiveRedMoney() {   
     /*if (this.recordUrl != ''){
       wx.showLoading({
@@ -261,15 +275,30 @@ Page({
         formData: {},
         success: res => {
           let serverRes = JSON.parse(res.data);
+          console.log(serverRes);
           if (serverRes.code == 200) {
             wx.hideLoading();
             app.globalData.cardInfo.bg_music_id = this.data.templateInfo.music_id;
-            app.globalData.cardInfo.upload_record_path = serverRes.data;
+            app.globalData.cardInfo.upload_record_path = serverRes.data.filePartName;
             this.livePage();
             wx.navigateTo({
               url: '../../makeCard/giveRedMoney/giveRedMoney'
             })
+          } else {
+            wx.showToast({
+              title: '上传录音失败，请再试一次哦~',
+              icon: 'none'
+            })
           }
+        },
+        fail: res => {
+          wx.showToast({
+            title: '上传录音失败，请再试一次哦~',
+            icon: 'none'
+          })
+        },
+        complete: () => {
+          wx.hideLoading();
         }
       })
     }*/

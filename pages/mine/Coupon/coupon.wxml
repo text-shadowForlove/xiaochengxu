@@ -7,9 +7,10 @@
                 <text class="voucher-money">¥200</text>
                 <text class="voucher-text">抵用券</text>
             </text>
-            <navigator class="go-use" url="{{card.navigateTo}}">去使用</navigator>
+            <view class='go-use' bindtap='goUseCoupon'>去使用</view>
+            
         </view>
-        <text class="count">数量: 3</text>
+        <text class="count">数量: {{couponCount}}</text>
         <image src="/images/baby.png"></image>
     </view>
 </view>

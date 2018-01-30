@@ -2,11 +2,11 @@ const app = getApp();
 const util = require('../../utils/util.js');
 Page({
   data: {
-    haveMoney: '',
+    haveMoney: 0.00,
     withdrawMoney: '',
     withdrawFocus: false,
     isValidMoney: true,
-    isZero: false,
+    enterHint: '输入金额大于用户余额'
   },
   onLoad: function (options) {
     
@@ -31,37 +31,41 @@ Page({
       success: res => {
         if (res.data.code == 200) {
           this.setData({
-            haveMoney: res.data.data.wxhk_balance
+            haveMoney: res.data.data.wxhk_balance.toFixed(2)
           })
         }
       },
     })
   },
+  checkDecimals(e) {
+    let withdrawInput = e.detail.value;
+    let withdrawMoneyArr = withdrawInput.split('.');
+    if (withdrawMoneyArr.length > 1) {
+      if (withdrawMoneyArr[1].length > 2) {
+        this.setData({
+          withdrawMoney: Number(withdrawInput).toFixed(2)
+        })
+      }
+    }
+  },
   changeWithdrawMoney(e) {
-    let withdrawMoney, withdrawFocus = false, isValidMoney = true;
+    let withdrawMoney, withdrawFocus = false, isValidMoney = true, enterHint = '输入金额大于用户余额';
     if(e.type == 'tap'){
       withdrawMoney = this.data.haveMoney;
     } else {
       withdrawMoney = e.detail.value;
-      if (Number(withdrawMoney) > Number(this.data.haveMoney) || Number(withdrawMoney) <= 0.009){
+      if (Number(withdrawMoney) > Number(this.data.haveMoney) || Number(withdrawMoney) < 1){
         withdrawMoney = '';
         withdrawFocus = true;
-        isValidMoney = false;  
-      }
-      if (Number(withdrawMoney) <= 0.009) {
-        this.setData({
-          isZero: true
-        })
-      } else {
-        this.setData({
-          isZero: false
-        })
+        isValidMoney = false;
+        if (Number(withdrawMoney) < 1) enterHint = '由微信支付商户平台规定，每次提现不小于1元哦';
       }
     }
     this.setData({
       withdrawMoney: withdrawMoney,
       withdrawFocus: withdrawFocus,
-      isValidMoney: isValidMoney
+      isValidMoney: isValidMoney,
+      enterHint: enterHint
     })
   },
   //提现
@@ -72,27 +76,35 @@ Page({
         open_id: app.globalData.openId,
         user_id: app.globalData.userInfo.user_id
       }
-      console.log(paramsData);
       wx.request({
         url: util.urlData.baseAjaxUrl + '/yishuo/api_web/reception/wxhk_transfers',
         header: { "Content-Type": "application/x-www-form-urlencoded"},
         method: 'post',
         data: paramsData,
         success: res => {
+          console.log(res);
           if (res.data.code == 200) {
             app.globalData.withdrawInfo = {
               withdrawMoney: this.data.withdrawMoney,
               balanceMoney: Number(this.data.haveMoney) - Number(this.data.withdrawMoney)
             }
             wx.navigateTo({
-              url: '../withdraw/withdraw/withdrawSuccess/withdrawSuccess',
+              url: '../withdraw/withdrawSuccess/withdrawSuccess',
             })
           }
         },
       })
     }
+    /*console.log(this.data.withdrawMoney);
+    app.globalData.withdrawInfo = {
+      withdrawMoney: this.data.withdrawMoney,
+      balanceMoney: Number(this.data.haveMoney) - Number(this.data.withdrawMoney)
+    }
+    wx.navigateTo({
+      url: '../withdraw/withdrawSuccess/withdrawSuccess',
+    })*/
   },
-  goWithdrawList() {
+  goWithdrawHistory() {
     wx.navigateTo({
       url: '../withdraw/withdrawHistory/withdrawHistory',
     })

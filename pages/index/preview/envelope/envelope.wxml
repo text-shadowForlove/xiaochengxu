@@ -1,5 +1,5 @@
 <!--pages/index/preview/envelope/envelope.wxml-->
-<view class="page-container">
+<view class="page-container" style="background: url({{template.bg_resource_path}}) no-repeat; background-size:cover">
     <view class="msc">
         <image bindtap="musicPlayStatus" src="{{musicPath[0]}}"></image>
     </view>

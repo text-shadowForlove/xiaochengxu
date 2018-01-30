@@ -5,14 +5,16 @@ const util = require('../../../../utils/util.js');
 Page({
 
   data: {
+    animationData: {},
     cardInfo: {},
     templateInfo: {},
     imgPath: ["/images/upload.png", "/images/moren.png"],
     musicPath: ["/images/msc.png", "/images/nomsc.png"],
     fromPreview: '',
     fromsendFriend: '',
-    haveRedPackets: '',
-    btnStatus: ''
+    haveRedPackets: 'true',
+    btnStatus: '',
+    needPayMoney: 8
   },
   //音乐播放状态
   musicPlayStatus() {
@@ -22,45 +24,50 @@ Page({
   },
   //支付方式
   payWay() {
-    wx.requestPayment({
-      'timeStamp': '',
-      'nonceStr': '',
-      'package': '',
-      'signType': 'MD5',
-      'paySign': '',
-      'success': function (res) {},
-      'fail': function (res) {}
-    })
+    let payData = {
+      pay_amount: this.data.needPayMoney,
+      user_id: app.globalData.userInfo.user_id,
+      open_id: app.globalData.openId
+    }
+    util.weChatPay(payData, () => {
+      //console.log('1111111111');
+      wx.navigateTo({
+        url: "../../sendFriend/sendFriend",
+
+      })
+    });
   },
   giveHongBao() {
     wx.navigateTo({
-      url: '../../makeCard/giveRedMoney/giveRedMoney',
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
+      url: '../../makeCard/giveRedMoney/giveRedMoney'
     })
   },
-  //收到贺卡 查看红包
-  seeEnvelope() {
-
-  },
   toggleImg() {
-    this.setData({
+    /*this.setData({
       imgPath: [this.data.imgPath[1], this.data.imgPath[0]]
+    })*/
+    wx.createAnimation({
+      duration: 1000,
+      timingFunction: "ease"
     })
   },
   onLoad: function (options) {
+    console.log(app.globalData.cardInfo.upload_picture_path);
+    console.log(app.globalData.templateInfo.default_resource_path);
+
+    if (!app.globalData.userInfo) {
+      app.loginYishuo();
+    }
     this.setData({
       cardInfo: app.globalData.cardInfo,
       haveRedPackets: app.globalData.haveRedPackets,
       templateInfo: app.globalData.templateInfo,
-      //imgPath: [app.globalData.cardInfo.upload_picture_path, app.globalData.templateInfo.default_resource_path]
+
+      needPayMoney: app.globalData.cardInfo.red_envelopes_amount,
+      // imgPath: [util.handleSource(app.globalData.cardInfo.upload_picture_path), app.globalData.templateInfo.default_resource_path]
     });
-  }
+    // wx.playVoice({
+
+    // })
+  },
 })

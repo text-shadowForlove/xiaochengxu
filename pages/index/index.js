@@ -28,8 +28,13 @@ Page({
           this.setData({
             defaultTemplate: tempData
           })
+        } else {
+          util.errorToast()
         }
       },
+      fail: () => {
+        util.errorToast()
+      }
     })
   },
   //获取制作及收到人数
@@ -61,6 +66,7 @@ Page({
       method: 'post',
       data: {},
       success: res => {
+        console.log(res);
         if(res.data.code == 200) {
           let templateList = res.data.data.list;
           for (let i = 0; i < templateList.length; i++){
@@ -76,8 +82,13 @@ Page({
           this.setData({
             templateRow: tempRow
           })
+        } else {
+          util.errorToast()
         }
       },
+      fail: () => {
+        util.errorToast()
+      }
     })
   },
   //点击模板跳转(未登录需授权)

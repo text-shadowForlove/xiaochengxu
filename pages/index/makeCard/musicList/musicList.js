@@ -66,8 +66,13 @@ Page({
           this.setData({
             musicList: res.data.data.list
           })
+        } else {
+          util.errorToast()
         }
       },
+      fail: () => {
+        util.errorToast()
+      }
     })
   },
   changeChoiceMusic(e) {

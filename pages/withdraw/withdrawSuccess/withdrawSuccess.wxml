@@ -8,8 +8,8 @@
     <view class='message-list'>
       <view class='message-item'>
         <text class='item-title'>提现金额</text>
-        <text class='item-value'>¥ 8.88{{withdrawMoney}}</text>
-        <text class='see-withdraw-history'>查看提现记录</text>
+        <text class='item-value'>¥ {{withdrawMoney}}</text>
+        <text class='see-withdraw-history' bindtap='goWithdrawHistory'>查看提现记录</text>
       </view>
       <view class='message-item'>
         <text class='item-title'>提现渠道</text>
@@ -17,11 +17,11 @@
       </view>
       <view class='message-item'>
         <text class='item-title'>提现账号</text>
-        <text class='item-value'>微信昵称{{withdrawUser}}</text>
+        <text class='item-value'>{{withdrawUser}}</text>
       </view>
       <view class='message-item is-last'>
         <text class='item-title'>可提现金额</text>
-        <text class='item-value'>¥ 8.88{{canWithdrawMoney}}</text>
+        <text class='item-value'>¥ {{canWithdrawMoney}}</text>
       </view>
     </view>
     <view class='message-hnit'>

@@ -10,10 +10,10 @@ Page({
     numFocus: false,
     haveMoney: 0,
     needPayMoney: 0,
-    isPaySuccess: false,
     isIos: app.globalData.systemInfo ? app.globalData.systemInfo.isIos : false
   },
   isCanClick: true,
+  userPaySuccess: false,
   onLoad: function (options) {
     this.getUserBalance();
   },
@@ -28,16 +28,17 @@ Page({
         success: res => {
           if(res.data.code == 200){
             this.setData({
-              haveMoney: Number(res.data.data.wxhk_balance)
+              haveMoney: Number(res.data.data.wxhk_balance).toFixed(2)
             })
           }
         },
       })
     }
   },
+  //获取输入总金额
   getTotalMoney(e) {
     if (e.detail.value != ''){
-      if (Number(e.detail.value) > 200 || Number(e.detail.value) <= 0) {
+      if (Number(e.detail.value) > 200 || Number(e.detail.value) < 0.01) {
         wx.showToast({
           title: '红包金额需在0.01~200元之间',
           icon: 'none'
@@ -56,8 +57,9 @@ Page({
       });
     }
   },
+  //获取输入数量
   getMoneyNum(e) {
-    if (Number(e.detail.value) > 100 || Number(e.detail.value) <= 0) {
+    if (Number(e.detail.value) > 100 || Number(e.detail.value) < 1) {
       wx.showToast({
         title: '红包数量需在1~100之间',
         icon: 'none'
@@ -71,6 +73,7 @@ Page({
       this.comparetTotalNum(this.data.totalMoney, e.detail.value);
     }
   },
+  //吉利数字点击时改变输入总金额
   changeTotalMoney(e) {
     let index = e.currentTarget.dataset.choicedid;
     this.comparetTotalNum(this.data.moneyList[index - 1], this.data.moneyNum);
@@ -78,26 +81,26 @@ Page({
       isChoicedId: index
     })
   },
+  //支付
   payMoney() {
     if (app.globalData.userInfo) {
       this.isCanEmptyAll = false;  //付款不能都为空
       this.estimateClick();
       if (this.isCanClick) {
-        let payData = {
-          pay_amount: this.data.needPayMoney,
-          user_id: app.globalData.userInfo.user_id,
-          open_id: app.globalData.openId
+        if (app.globalData.isPayRedPackets){
+          app.createCard();
+        } else {
+          let payData = {
+            pay_amount: this.data.totalMoney,
+            user_id: app.globalData.userInfo.user_id,
+            open_id: app.globalData.openId
+          }
+          app.weChatPay(payData, this.data.moneyNum);
         }
-        util.weChatPay(payData, () => {
-          app.globalData.cardInfo.red_envelopes_amount = this.data.totalMoney;
-          app.globalData.cardInfo.red_envelopes_count = this.data.moneyNum;
-          app.globalData.haveRedPackets = true;
-          app.globalData.isPayRedPackets = true;
-          this.createCard();
-        });
       }
     }
   },
+  //前往预览贺卡
   previewCard() {
     this.isCanEmptyAll = true;  //预览可都为空
     this.estimateClick();
@@ -160,22 +163,7 @@ Page({
       }
     }
   },
-  //生成贺卡
   createCard() {
-    /*wx.request({
-      url: util.urlData.baseAjaxUrl + '/yishuo/api_web/reception/insert_greeting_card',
-      header: {"Content-Type": "application/x-www-form-urlencoded" },
-      method: 'post',
-      data: app.globalData.cardInfo,
-      success: res => {
-        console.log(res);
-        wx.navigateTo({
-          url: '../../sendFriend/sendFriend?cardId=' + res.data.data.id
-        })
-      },
-    })*/
-    wx.navigateTo({
-      url: '../../sendFriend/sendFriend?cardId=8'
-    })
+    app.createCard();
   }
 })

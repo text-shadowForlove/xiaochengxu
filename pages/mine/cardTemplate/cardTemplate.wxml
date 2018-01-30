@@ -4,7 +4,7 @@
         <image src="{{card.showTimeOrMoney.picturePath}}"></image>
         <view class="title-date">
             <text class="card-title">{{card.showTimeOrMoney.cardTitle}}</text>
-            <text class="date">{{card.showTimeOrMoney.creatTime}}</text>
+            <text class="date">{{card.showTimeOrMoney.createTime}}</text>
         </view>
         <view class="info-container">
             <text wx:if="{{card.showTimeOrMoney.showStatus}}" class="info-time">{{card.showTimeOrMoney.showInfo}}</text>

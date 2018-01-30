@@ -1,3 +1,6 @@
+.container {
+  overflow: hidden;
+}
 .show-card-image {
   text-align: center;
   height: 974rpx;

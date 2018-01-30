@@ -17,19 +17,18 @@ Page({
   },
   openCard: function () {
     wx.navigateTo({
-      url: "../preview/envelope/envelope?fromsendFriend=" + true
+      url: "../preview/envelope/envelope"
     })
   },
   onShareAppMessage: function (res) {
-    console.log(app.globalData.userInfo);
     let festival, weChatName = app.globalData.userInfo.wx_name;
     let templateTitle = app.globalData.templateInfo.resource_name;
     if (templateTitle.indexOf('情人节') >= 0) {
-      festival = '情人节表白'
-    } else if (templateTitle.indexOf('新春') >= 0) {
-      festival = '新春祝福'
+      festival = '情人节表白';
+    } else if (templateTitle.indexOf('春节') >= 0) {
+      festival = '新春祝福';
     } else {
-      festival = '节日祝福'
+      festival = '节日祝福';
     }
     return {
       title: '来自' + weChatName + '的' + festival,
@@ -54,8 +53,13 @@ Page({
               wx.navigateTo({
                 url: '../../index/shareSucceed/shareSucceed',
               })
+            } else {
+              util.errorToast()
             }
           },
+          fail: () => {
+            util.errorToast()
+          }
         })
       },
       fail: res => {

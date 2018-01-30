@@ -16,6 +16,7 @@ Page({
   //获取模板详情
   getTemplateInfo(e) {
     let getParam;
+    //点击换一张，无ID数据，进入页面时根据传入ID获取
     if(e){
       getParam = null;
     } else {
@@ -38,11 +39,16 @@ Page({
           this.setData({
             templateInfo: tempData
           })
+        } else {
+          util.errorToast()
         }
       },
+      fail: () => {
+        util.errorToast()
+      }
     })
   },
-  //跳转到上传图片
+  //下一步：上传图片
   goUploadImg() {
     app.globalData.templateInfo = this.data.templateInfo;
     app.globalData.cardInfo.bg_picture_id = this.data.templateInfo.id;

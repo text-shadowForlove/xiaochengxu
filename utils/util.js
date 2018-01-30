@@ -1,3 +1,4 @@
+
 const urlData = {
   baseAjaxUrlTrue: 'https://www.1shuo.me/jinjidian3.0',
   baseAjaxUrl: 'http://192.168.2.126:8080/MessagePush',
@@ -68,44 +69,11 @@ const handleVoice = src => {
   return val;
 }
 
-//微信支付
-const weChatPay = (payData, callback) => {
-  wx.request({
-    url: urlData.baseAjaxUrl + '/yishuo/api_web/reception/wxhk_pay',
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    method: 'post',
-    data: payData,
-    success: res => {
-      if (res.data.code == 200) {
-        let getData = res.data.data;
-        wx.requestPayment({
-          'timeStamp': getData.timestamp,
-          'nonceStr': getData.noncestr,
-          'package': 'prepay_id=' + getData.prepayid,
-          'signType': 'MD5',
-          'paySign': getData.sign,
-          'success': res => {
-            if (callback) {
-              callback()
-            }
-          },
-          'fail': res => {
-            let hnitInfo;
-            if (res.errMsg.indexOf('cancel') >= 0) {
-              hnitInfo = '已取消支付'
-            } else {
-              hnitInfo = res.err_desc;
-            }
-            wx.showToast({
-              title: hnitInfo,
-              icon: 'none'
-            });
-          }
-        })
-      }
-    },
+//请求后台接口错误
+const errorToast = () => {
+  wx.showToast({
+    title: '网络状况不佳，请稍后再试',
+    icon: 'none'
   })
 }
 
@@ -114,11 +82,19 @@ const getCardType = cardType => {
   let cardCategory;
   if (cardType == 1) {
     cardCategory = '祝福贺卡'
-    return cardCategory
   } else if (cardType == 2) {
     cardCategory = '红包贺卡'
-    return cardCategory
   }
+  return cardCategory
+}
+
+//转换提现状态
+const getWithdrawType = status => {
+  let withdrawType;
+  if (status == 1) withdrawType = '失败';
+  if (status == 2) withdrawType = '成功';
+  if (status == 0) withdrawType = '审核中';
+  return withdrawType;
 }
 
 module.exports = {
@@ -127,6 +103,7 @@ module.exports = {
   formatDuration: formatDuration,
   handleSource: handleSource,
   handleVoice: handleVoice,
-  weChatPay: weChatPay,
-  getCardType: getCardType
+  getCardType: getCardType,
+  errorToast: errorToast,
+  getWithdrawType: getWithdrawType
 }
